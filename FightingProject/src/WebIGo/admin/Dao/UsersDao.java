@@ -5,29 +5,25 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
-import WebIGo.admin.Bean.Goods;
+import WebIGo.admin.Bean.User;
 import WebIGo.admin.utils.MybatisUtil;
 
-public class GoodsDao {
+public class UsersDao {
 	private SqlSessionFactory sessionFactory = MybatisUtil.getInstance();
-
-	public List<Goods> listGoods()
-	{
-		SqlSession session = sessionFactory.openSession();
-		GoodsMapper goodsMapper = session.getMapper(GoodsMapper.class);
-		List<Goods> goodsList = goodsMapper.listGoods();
-		return goodsList;
-		
-	}
 	
-	public int addGoods(Goods  goods)
-	{
+	public List<User> listUsers(){
 		SqlSession session = sessionFactory.openSession();
-		GoodsMapper goodsMapper = session.getMapper(GoodsMapper.class);
-		goodsMapper.addGoods(goods);
+		UsersMapper usersMapper = session.getMapper(UsersMapper.class);
+		List<User> usersList = usersMapper.listUsers();
+		return usersList;
+	}
+
+	public int addUser(User user) {
+		// TODO Auto-generated method stub
+		SqlSession session = sessionFactory.openSession();
+		UsersMapper usersMapper = session.getMapper(UsersMapper.class);
+		usersMapper.addUser(user);
 		session.commit();
 		return 0;
-		
 	}
-
 }

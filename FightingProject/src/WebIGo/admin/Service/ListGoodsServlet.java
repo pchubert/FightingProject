@@ -1,28 +1,30 @@
 package WebIGo.admin.Service;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
+import com.google.gson.Gson;
 
-import WebIGo.admin.Bean.GoodsType;
-import WebIGo.admin.Dao.GoodsTypeDao;
+import WebIGo.admin.Bean.Goods;
+import WebIGo.admin.Dao.GoodsDao;
 
 /**
- * Servlet implementation class AddGoodsType
+ * Servlet implementation class ListProductServlet
  */
-@WebServlet("/AddGoodsTypeServlet")
-public class AddGoodsTypeServlet extends HttpServlet {
+@WebServlet("/ListGoodsServlet")
+public class ListGoodsServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddGoodsTypeServlet() {
+    public ListGoodsServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -34,23 +36,18 @@ public class AddGoodsTypeServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
-		//新建 GoodType 对象
-		GoodsType goodsType = new GoodsType();
-		
-		//设置各属性值
-		goodsType.setTname(new String(request.getParameter("Tname").getBytes("ISO8859-1"),"UTF-8"));
-		goodsType.setTpic("/Upload/"+new String(request.getParameter("Tpic").getBytes("ISO8859-1"),"UTF-8"));
-		goodsType.setTintro(new String(request.getParameter("Tintro").getBytes("ISO8859-1"),"UTF-8"));
-		goodsType.setTbrief(new String(request.getParameter("Tbrief").getBytes("ISO8859-1"),"UTF-8"));
-
-		
-		//创建 DAO 对象
-		GoodsTypeDao goodsTypeDao = new GoodsTypeDao();
-		
-		//调用 Add 方法
-		int i = goodsTypeDao.addGoodsType(goodsType);
-		
-		response.getWriter().write(i);
+		//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表
+		List<Goods> goods = new GoodsDao().listGoods();
+				
+		//新建 gson 对象
+		Gson gson = new Gson();
+				
+		//完成 Java 对象和 Json 字符串的转化
+		String JgoodsTypes = gson.toJson(goods);
+				
+		//添加入响应
+		//以 Json 字符串形式交付前端处理
+		response.getWriter().append(JgoodsTypes);
 		
 		response.getWriter().close();
 	}

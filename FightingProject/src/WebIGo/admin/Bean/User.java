@@ -1,15 +1,19 @@
 package WebIGo.admin.Bean;
 
+import java.util.Date;
+
 public class User {
 	private  int  Uid;
 	private  String Uname;
 	private String Upwd;
 	private String Uemail;
-	private String UrealName;
+	private String Urealname;
+	private Date Udate;
 	private String Uphone;
 	private int Utype;
 	private int Ucread;
-	private int Umoney;
+	private double Umoney;
+	
 	public int getUid() {
 		return Uid;
 	}
@@ -34,11 +38,11 @@ public class User {
 	public void setUemail(String uemail) {
 		Uemail = uemail;
 	}
-	public String getUrealName() {
-		return UrealName;
+	public String getUrealname() {
+		return Urealname;
 	}
-	public void setUrealName(String urealName) {
-		UrealName = urealName;
+	public void setUrealname(String urealname) {
+		Urealname = urealname;
 	}
 	public String getUphone() {
 		return Uphone;
@@ -58,10 +62,16 @@ public class User {
 	public void setUcread(int ucread) {
 		Ucread = ucread;
 	}
-	public int getUmoney() {
+	public double getUmoney() {
 		return Umoney;
 	}
-	public void setUmoney(int umoney) {
+	public void setUmoney(double umoney) {
 		Umoney = umoney;
+	}
+	public Date getUdate() {
+		return Udate;
+	}
+	public void setUdate(Date udate) {
+		Udate = udate;
 	}
 }

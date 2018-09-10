@@ -1,7 +1,7 @@
+<%@page import="javax.websocket.Session"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
     <%
-   
     if(session.getAttribute("username") == null)
     {
     	  response.sendRedirect("login.jsp");
@@ -24,7 +24,7 @@
     
 	var RoadMapTool = cDesk.AppButton().getInstance({
 	    appName: '商品入库' ,
-	    appUrl: './Product/AddProduct.jsp',
+	    appUrl: './Good/AddGoods.jsp',
 		appIcon:'./img/map2.png',
 	    appClickHandle: function (RoadMapTool) {
 	        var win = cDesk.Windows().getInstance(desk, RoadMapTool, {
@@ -38,9 +38,11 @@
 	        cDesk.Taskbar.AddTask(win);
 	    }
 	});
+	
+	
 	var RoadMapTool2 = cDesk.AppButton().getInstance({
 	    appName: '查看库存' ,
-	    appUrl: 'http://localhost:8080/RoadMap/LoadRoad2.html',
+	    appUrl: './Good/ShowGoods.jsp',
 		appIcon:'./img/map3.png',
 	    appClickHandle: function (RoadMapTool2) {
 	        var win = cDesk.Windows().getInstance(desk, RoadMapTool2, {

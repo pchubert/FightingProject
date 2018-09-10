@@ -9,6 +9,7 @@ import WebIGo.admin.utils.MybatisUtil;
 
 public class GoodsTypeDao {
 	private SqlSessionFactory sessionFactory = MybatisUtil.getInstance();
+	
 	public List<GoodsType> listGoodsType()
 	{
 		SqlSession session = sessionFactory.openSession();
@@ -17,6 +18,7 @@ public class GoodsTypeDao {
 		return typeList;
 		
 	}
+	
 	public int addGoodsType(GoodsType  goodsType)
 	{
 		SqlSession session = sessionFactory.openSession();

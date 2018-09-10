@@ -23,6 +23,6 @@
         <mapper resource="WebIGo/admin/Dao/GoodsMapper.xml"/>
         <mapper resource="WebIGo/admin/Dao/OrderMapper.xml"/>
         <mapper resource="WebIGo/admin/Dao/AddressMapper.xml"/>
-        <mapper resource="WebIGo/admin/Dao/UserMapper.xml"/>
+        <mapper resource="WebIGo/admin/Dao/UsersMapper.xml"/>
     </mappers>
 </configuration>
