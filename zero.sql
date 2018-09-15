@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 10/09/2018 20:47:12
+ Date: 15/09/2018 15:00:52
 */
 
 SET NAMES utf8mb4;
@@ -29,7 +29,13 @@ CREATE TABLE `address`  (
   `buildingName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '建筑名',
   `introduction` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '介绍',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+
+-- ----------------------------
+-- Records of address
+-- ----------------------------
+INSERT INTO `address` VALUES (1, 14, NULL, '6363', NULL, NULL);
+INSERT INTO `address` VALUES (2, 14, NULL, '1215', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for admininfo
@@ -76,14 +82,14 @@ CREATE TABLE `goodsinfo`  (
 -- Records of goodsinfo
 -- ----------------------------
 INSERT INTO `goodsinfo` VALUES (1, NULL, NULL, NULL, '2018-08-25 20:24:37', 'C:/', 1, '2233', '3344', NULL, NULL, NULL, NULL, NULL);
-INSERT INTO `goodsinfo` VALUES (2, 'fruit', 20, 4, '2018-09-08 05:53:26', '123', 1, 'å¯ï¼åªæ¯æ°´æèå·²', 'æ°´æå¤§æ³å¥½å', NULL, NULL, 0.95, 2, 'æ¤');
 INSERT INTO `goodsinfo` VALUES (3, '水果', 20, 4, '2018-09-08 07:16:40', '123', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.95, 2, '斤');
-INSERT INTO `goodsinfo` VALUES (4, '水鬼', 20, 4, '2018-09-08 07:23:14', '123', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.95, 2, '斤');
+INSERT INTO `goodsinfo` VALUES (4, '水果', 0, 0, '2018-09-08 07:23:14', '567', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0, 2, '斤');
 INSERT INTO `goodsinfo` VALUES (5, '水鬼', 20, 4, '2018-09-08 07:23:48', '123', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.95, 2, '斤');
 INSERT INTO `goodsinfo` VALUES (6, '正式的水果', 20, 4, '2018-09-09 01:06:05', '123', 1, '嗯，只是水果而已', '水果大法好啊\r\n', NULL, NULL, 0.95, 2, '斤');
 INSERT INTO `goodsinfo` VALUES (7, 'fruit', 20, 4, '2018-09-09 02:24:36', '/Upload/fruit.jpg', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.95, 2, '斤');
 INSERT INTO `goodsinfo` VALUES (8, '完整的水果', 20, 4, '2018-09-09 03:03:30', '/Upload/1536462208105.jpg', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.95, 2, '斤');
 INSERT INTO `goodsinfo` VALUES (9, '尝试干吧水果', 70, 8, '2018-09-09 05:50:34', '/Upload/1536472220826.jpg', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.85, 3, '斤');
+INSERT INTO `goodsinfo` VALUES (10, '芒果', 3, 4, '2018-09-15 02:04:19', '/Upload/1536977042497.jpg', 1, '二外额外群若', '为期 ', NULL, NULL, 0.2, 2, '4');
 
 -- ----------------------------
 -- Table structure for goodstype
@@ -104,7 +110,7 @@ CREATE TABLE `goodstype`  (
 INSERT INTO `goodstype` VALUES (4, NULL, NULL, NULL, NULL);
 INSERT INTO `goodstype` VALUES (5, NULL, 'C:\\Users\\winte\\Pictures\\2018-03-20-0.jpg', '', '');
 INSERT INTO `goodstype` VALUES (6, '123', 'C:\\Users\\winte\\Pictures\\2018-03-20-0.jpg', '', '');
-INSERT INTO `goodstype` VALUES (7, 'æ°é²çæ°´æ', '1536471532050.jpg', 'å¯ï¼åªæ¯æ°´æèå·²', 'æ°´æå¤§æ³å¥½å');
+INSERT INTO `goodstype` VALUES (7, '太空水果', NULL, '非本地产', '来自外太空');
 INSERT INTO `goodstype` VALUES (8, 'æ°é²çæ°´æ', '/Upload/1536471729038.jpg', 'å¯ï¼åªæ¯æ°´æèå·²', 'æ°´æå¤§æ³å¥½å');
 INSERT INTO `goodstype` VALUES (9, '正常水果', '/Upload/1536471889116.jpg', '嗯，只是水果而已', '水果大法好啊');
 
@@ -158,11 +164,12 @@ CREATE TABLE `userinfo`  (
   `Umoney` double NULL DEFAULT NULL COMMENT '用户余额',
   `Udate` datetime(0) NULL DEFAULT NULL COMMENT '用户注册时间',
   PRIMARY KEY (`Uid`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of userinfo
 -- ----------------------------
-INSERT INTO `userinfo` VALUES (1, 'kp', '123456', '123456789@qq.com', 'kunpeng', '12341111', 1, NULL, 2233, '2018-08-25 00:57:13');
+INSERT INTO `userinfo` VALUES (1, 'kp', '7894555', 'auska123456@qq.com', 'kunpeng', '12341111', 1, NULL, 2233, '2018-08-25 00:57:13');
+INSERT INTO `userinfo` VALUES (2, '鲲鹏', '45678', '123456789@qq.com', '苏回', '124679123', 2, NULL, 9999.9, '2018-09-14 02:14:03');
 
 SET FOREIGN_KEY_CHECKS = 1;

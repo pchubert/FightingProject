@@ -7,6 +7,12 @@
 	  insert into goodstype (Tname,Tpic,Tintro,Tbrief)
 	  values (#{Tname},#{Tpic},#{Tintro},#{Tbrief})
 	</insert>
+	
+	<!-- 查找所有 -->
+    <select id="listOrderInfos" parameterType="WebIGo.admin.Bean.OrderInfo" resultType="WebIGo.admin.Bean.OrderInfo">
+        select * from orderinfo
+    </select>
+	
     <!-- 查找所有 -->
     <select id="listGoodsType" parameterType="WebIGo.admin.Bean.OrderInfo" resultType="WebIGo.admin.Bean.OrderInfo">
         select * from goodstype

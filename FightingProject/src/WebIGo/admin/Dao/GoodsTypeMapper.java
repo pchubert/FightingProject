@@ -8,4 +8,5 @@ import WebIGo.admin.Bean.GoodsType;
 public interface GoodsTypeMapper {
 	 List<GoodsType> listGoodsType();
 	 int addGoodsType(GoodsType goodsType);
+	void updateGoodsType(GoodsType goodsType);
 }

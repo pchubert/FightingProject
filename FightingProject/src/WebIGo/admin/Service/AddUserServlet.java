@@ -34,12 +34,12 @@ public class AddUserServlet extends HttpServlet{
 		User user = new User();
 		
 		//前端表单提交数据
-		user.setUname(req.getParameter("Uname"));
-		user.setUpwd(req.getParameter("Upwd"));
-		user.setUemail(req.getParameter("Uemail"));
-		user.setUrealname(req.getParameter("Urealname"));
+		user.setUname(new String(req.getParameter("Uname").getBytes("ISO8859-1"),"UTF-8"));
+		user.setUpwd(new String(req.getParameter("Upwd").getBytes("ISO8859-1"),"UTF-8"));
+		user.setUemail(new String(req.getParameter("Uemail").getBytes("ISO8859-1"),"UTF-8"));
+		user.setUrealname(new String(req.getParameter("Urealname").getBytes("ISO8859-1"),"UTF-8"));
 		user.setUdate(new Date());
-		user.setUphone(req.getParameter("Uphone"));
+		user.setUphone(new String(req.getParameter("Uphone").getBytes("ISO8859-1"),"UTF-8"));
 		user.setUtype(Integer.parseInt(req.getParameter("Utype")));
 		user.setUmoney(Double.parseDouble(req.getParameter("Umoney")));
 		
@@ -47,7 +47,7 @@ public class AddUserServlet extends HttpServlet{
 		UsersDao uesrsDao = new UsersDao();
 		
 		//调用 add 方法
-		int i = uesrsDao.addUser(user);
+		int i = uesrsDao.addUser2(user);
 		resp.getWriter().write(i);
 		
 		resp.getWriter().close();

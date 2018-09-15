@@ -127,9 +127,9 @@
 	</table>
     </div>
     
-    <% 
+   <!--  
     	List<Goods> goods = new GoodsDao().listGoods();
-    %>
+    --> 
     
     <div class="layui-table-body layui-table-main" style="height: 251px;">
     <table cellspacing="0" cellpadding="0" border="0" class="layui-table">

@@ -29,8 +29,8 @@ import org.json.JSONObject;
 /**
  * Servlet implementation class UploadFileServerlet
  */
-@WebServlet("/UploadFileServerlet")
-public class UploadFileServerlet extends HttpServlet {
+@WebServlet("/UploadFileServlet")
+public class UploadFileServlet extends HttpServlet {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -42,7 +42,7 @@ public class UploadFileServerlet extends HttpServlet {
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UploadFileServerlet() {
+    public UploadFileServlet() {
         // TODO Auto-generated constructor stub
         super();
     }

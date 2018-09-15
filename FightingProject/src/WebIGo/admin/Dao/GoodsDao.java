@@ -29,5 +29,24 @@ public class GoodsDao {
 		return 0;
 		
 	}
+	
+	public int deleteGoods(Goods  goods)
+	{
+		SqlSession session = sessionFactory.openSession();
+		GoodsMapper goodsMapper = session.getMapper(GoodsMapper.class);
+		goodsMapper.deleteGoods(goods);
+		session.commit();
+		return 0;
+
+	}
+
+	public int updateGoods(Goods goods) {
+		// TODO Auto-generated method stub
+		SqlSession session = sessionFactory.openSession();
+		GoodsMapper goodsMapper = session.getMapper(GoodsMapper.class);
+		goodsMapper.updateGoods(goods);
+		session.commit();
+		return 0;
+	}
 
 }

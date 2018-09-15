@@ -7,8 +7,21 @@
 	  insert into address (uid,name,telephone,buildingName,introduction)
 	  values (#{uid},#{name},#{telephone},#{buildingName},#{introduction})
 	</insert>
+   
     <!-- 查找所有 -->
-    <select id="listAddressofUser" parameterType="WebIGo.admin.Bean.Address" resultType="WebIGo.admin.Bean.Address">
+    <select id="listAddresses" parameterType="WebIGo.admin.Bean.Address" resultType="WebIGo.admin.Bean.Address">
+        select * from address
+    </select>
+    
+     <!-- 查找该用户下所有 -->
+    <select id="listAddressesOfUser" parameterType="WebIGo.admin.Bean.Address" resultType="WebIGo.admin.Bean.Address">
         select * from address where uid= #{uid}
     </select>
+    
+    <delete id="deleteAddress" parameterType="WebIGo.admin.Bean.Address">
+        DELETE FROM address WHERE id=#{id}
+    </delete>
+    <update id="updateAddress" parameterType = "WebIGo.admin.Bean.Address">
+    	update address set telephone=#{telephone},buildingName=#{buildingName},introduction=#{introduction} where id= #{id}
+    </update>
 </mapper>

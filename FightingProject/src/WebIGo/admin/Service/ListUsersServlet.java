@@ -34,6 +34,10 @@ public class ListUsersServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		//解决正常中文字符串返回乱码
+		response.setCharacterEncoding("utf-8");
+		response.setContentType("text/html;charset=UTF-8");
+		
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表

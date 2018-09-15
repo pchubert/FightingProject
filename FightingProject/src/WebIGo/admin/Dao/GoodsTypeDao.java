@@ -29,5 +29,14 @@ public class GoodsTypeDao {
 		
 	}
 
+	public int updateGoodsType(GoodsType goodsType) {
+		// TODO Auto-generated method stub
+		SqlSession session = sessionFactory.openSession();
+		GoodsTypeMapper goodsTypeMapper = session.getMapper(GoodsTypeMapper.class);
+		goodsTypeMapper.updateGoodsType(goodsType);
+		session.commit();
+		return 0;
+	}
+
 
 }

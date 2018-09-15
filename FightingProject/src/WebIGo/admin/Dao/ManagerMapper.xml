@@ -6,4 +6,9 @@
     <select id="find" parameterType="WebIGo.admin.Bean.Manager" resultType="WebIGo.admin.Bean.Manager">
         select * from admininfo where Aname = #{Aname} AND Apwd = #{Apwd}
     </select>
+    
+    <!-- 查找所有 -->
+    <select id="listManagers" parameterType="WebIGo.admin.Bean.Manager" resultType="WebIGo.admin.Bean.Manager">
+        select * from admininfo
+    </select>
 </mapper>

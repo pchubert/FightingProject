@@ -7,8 +7,14 @@
 	  insert into goodstype (Tname,Tpic,Tintro,Tbrief)
 	  values (#{Tname},#{Tpic},#{Tintro},#{Tbrief})
 	</insert>
+	
     <!-- 查找所有 -->
     <select id="listGoodsType" parameterType="WebIGo.admin.Bean.GoodsType" resultType="WebIGo.admin.Bean.GoodsType">
         select * from goodstype
     </select>
+    
+    <!-- 修改记录 -->
+    <update id="updateGoodsType" parameterType = "WebIGo.admin.Bean.GoodsType" >
+    	update goodstype set Tname=#{Tname},Tpic=#{Tpic},Tintro=#{Tintro} ,Tbrief=#{Tbrief}where Tid=#{Tid}
+    </update>
 </mapper>
