@@ -13,8 +13,9 @@ import com.google.gson.Gson;
 
 import WebIGo.admin.Bean.Address;
 import WebIGo.admin.Dao.AddressDao;
+import WebIGo.admin.Tools.Layui;
 
-@WebServlet("/ListAddress")
+@WebServlet("/ListAddressesServlet")
 public class ListAddressesServlet extends HttpServlet{
 
 	/**
@@ -30,16 +31,20 @@ public class ListAddressesServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 		//解决正常中文字符串返回乱码
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=UTF-8");
-		
-		resp.getWriter().append("Served at: ").append(req.getContextPath());
+
 		
 		//获取查询地址的用户信息
 		Address address = new Address();
 		
-		address.setUid(Integer.parseInt(req.getParameter("Uid")));
+		//System.out.println("kks");测试代码
+		
+		if (req.getParameter("Uid")!=null) {
+			address.setUid(Integer.parseInt(req.getParameter("Uid")));
+		}
 		//address.setUid(Integer.parseInt("14"));//测试用
 		
 		//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表
@@ -55,16 +60,14 @@ public class ListAddressesServlet extends HttpServlet{
 			//System.out.println("listAddressesofUser : OK!");//测试用
 		}
 		
-		//新建 gson 对象
-		Gson gson = new Gson();
+		//新建 Layui 对象
+		Layui result = new Layui();
 		
-		//完成 Java 对象和 Json 字符串的转化
-		String Jaddresses=gson.toJson(addresses);
-		
-		//添加入响应
-		//以 Json 字符串形式交付前端处理
-		resp.getWriter().append(Jaddresses);
+		//完成 Json 字符串的转化并转化为 layui 所需要的数据串格式
+		//添加入响应，交付前端处理
+		resp.getWriter().write(result.toResult(addresses));
 		resp.getWriter().close();
+		
 
 	}
 	

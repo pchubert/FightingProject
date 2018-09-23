@@ -56,8 +56,6 @@ public class UploadFileServlet extends HttpServlet {
 		
 		ServletContext servletCtx = config.getServletContext();
 		
-
-		
 		//原语句
 		//PATH_FOLDER = "D:/source/aaa";
 		

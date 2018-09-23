@@ -11,7 +11,7 @@
  Target Server Version : 80011
  File Encoding         : 65001
 
- Date: 15/09/2018 15:00:52
+ Date: 23/09/2018 22:33:56
 */
 
 SET NAMES utf8mb4;
@@ -29,13 +29,14 @@ CREATE TABLE `address`  (
   `buildingName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '建筑名',
   `introduction` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '介绍',
   PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 6 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of address
 -- ----------------------------
 INSERT INTO `address` VALUES (1, 14, NULL, '6363', NULL, NULL);
 INSERT INTO `address` VALUES (2, 14, NULL, '1215', NULL, NULL);
+INSERT INTO `address` VALUES (5, 19, 'kks', '15465', '1213', 'dsfsdf');
 
 -- ----------------------------
 -- Table structure for admininfo
@@ -49,7 +50,7 @@ CREATE TABLE `admininfo`  (
   `ArealName` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员真实姓名',
   `APhone` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '管理员联系方式',
   PRIMARY KEY (`Aid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 1 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 2 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of admininfo
@@ -76,7 +77,7 @@ CREATE TABLE `goodsinfo`  (
   `Gtype` int(11) NULL DEFAULT NULL COMMENT '类别',
   `Gunit` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT NULL COMMENT '单位',
   PRIMARY KEY (`Gid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 11 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goodsinfo
@@ -90,6 +91,7 @@ INSERT INTO `goodsinfo` VALUES (7, 'fruit', 20, 4, '2018-09-09 02:24:36', '/Uplo
 INSERT INTO `goodsinfo` VALUES (8, '完整的水果', 20, 4, '2018-09-09 03:03:30', '/Upload/1536462208105.jpg', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.95, 2, '斤');
 INSERT INTO `goodsinfo` VALUES (9, '尝试干吧水果', 70, 8, '2018-09-09 05:50:34', '/Upload/1536472220826.jpg', 1, '嗯，只是水果而已', '水果大法好啊', NULL, NULL, 0.85, 3, '斤');
 INSERT INTO `goodsinfo` VALUES (10, '芒果', 3, 4, '2018-09-15 02:04:19', '/Upload/1536977042497.jpg', 1, '二外额外群若', '为期 ', NULL, NULL, 0.2, 2, '4');
+INSERT INTO `goodsinfo` VALUES (11, '变异水果', 99, 20, '2018-09-15 07:46:28', '/Upload/1536997574714.jpg', 1, '测试', '测试', NULL, NULL, 0.97, 3, '斤');
 
 -- ----------------------------
 -- Table structure for goodstype
@@ -102,7 +104,7 @@ CREATE TABLE `goodstype`  (
   `Tintro` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '商品介绍',
   `Tbrief` text CHARACTER SET utf8 COLLATE utf8_general_ci NULL COMMENT '商品简介',
   PRIMARY KEY (`Tid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 9 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 13 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of goodstype
@@ -113,6 +115,9 @@ INSERT INTO `goodstype` VALUES (6, '123', 'C:\\Users\\winte\\Pictures\\2018-03-2
 INSERT INTO `goodstype` VALUES (7, '太空水果', NULL, '非本地产', '来自外太空');
 INSERT INTO `goodstype` VALUES (8, 'æ°é²çæ°´æ', '/Upload/1536471729038.jpg', 'å¯ï¼åªæ¯æ°´æèå·²', 'æ°´æå¤§æ³å¥½å');
 INSERT INTO `goodstype` VALUES (9, '正常水果', '/Upload/1536471889116.jpg', '嗯，只是水果而已', '水果大法好啊');
+INSERT INTO `goodstype` VALUES (10, '水果K', '/Upload/1537621561880.jpg', 'fsdf', 'fdsfs');
+INSERT INTO `goodstype` VALUES (11, '水果b', '/Upload/1537621561880.jpg', 'fsdf', 'fdsfs');
+INSERT INTO `goodstype` VALUES (12, '苹果', '/Upload/1537691714834.jpg', 'djkf', 'fdfs');
 
 -- ----------------------------
 -- Table structure for ordergoods
@@ -164,7 +169,7 @@ CREATE TABLE `userinfo`  (
   `Umoney` double NULL DEFAULT NULL COMMENT '用户余额',
   `Udate` datetime(0) NULL DEFAULT NULL COMMENT '用户注册时间',
   PRIMARY KEY (`Uid`) USING BTREE
-) ENGINE = InnoDB AUTO_INCREMENT = 3 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
+) ENGINE = InnoDB AUTO_INCREMENT = 4 CHARACTER SET = utf8 COLLATE = utf8_general_ci ROW_FORMAT = Dynamic;
 
 -- ----------------------------
 -- Records of userinfo

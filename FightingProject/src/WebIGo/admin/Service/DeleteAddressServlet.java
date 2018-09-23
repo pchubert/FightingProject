@@ -28,7 +28,7 @@ public class DeleteAddressServlet extends HttpServlet{
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		
-		resp.getWriter().append("Served at: ").append(req.getContextPath());
+		//resp.getWriter().append("Served at: ").append(req.getContextPath());
 		
 		//获取查询地址的用户信息
 		Address address = new Address();

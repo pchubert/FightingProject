@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WebIGo.admin.Dao.GoodsTypeMapper"  >
+    <!-- 添加纪录 -->
+	<insert id="addGoodsType" parameterType="WebIGo.admin.Bean.GoodsType">
+	  insert into goodstype (Tname,Tpic,Tintro,Tbrief)
+	  values (#{Tname},#{Tpic},#{Tintro},#{Tbrief})
+	</insert>
+	
+    <!-- 查找所有 -->
+    <select id="listGoodsType" parameterType="WebIGo.admin.Bean.GoodsType" resultType="WebIGo.admin.Bean.GoodsType">
+        select * from goodstype
+    </select>
+    
+    <!-- 修改记录 -->
+    <update id="updateGoodsType" parameterType = "WebIGo.admin.Bean.GoodsType" >
+    	update goodstype set Tname=#{Tname},Tpic=#{Tpic},Tintro=#{Tintro} ,Tbrief=#{Tbrief}where Tid=#{Tid}
+    </update>
+</mapper>

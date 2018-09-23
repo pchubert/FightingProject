@@ -22,12 +22,13 @@
 <script type="text/javascript" src="cDesk/cdesk_config.js" ></script>
 <script type="text/javascript">
     
-	var RoadMapTool = cDesk.AppButton().getInstance({
+    //商品入库功能块(修缮中)
+	var goodsWarehousing = cDesk.AppButton().getInstance({
 	    appName: '商品入库' ,
 	    appUrl: './Good/AddGoods.jsp',
-		appIcon:'./img/map2.png',
-	    appClickHandle: function (RoadMapTool) {
-	        var win = cDesk.Windows().getInstance(desk, RoadMapTool, {
+		appIcon:'./images/goodsWarehousing.png',
+	    appClickHandle: function (goodsWarehousing) {
+	        var win = cDesk.Windows().getInstance(desk, goodsWarehousing, {
 	        	windowWidth:1205,
         		windowHeight:830,
 	            CloseCallback: function () {
@@ -39,13 +40,49 @@
 	    }
 	});
 	
+	//商品出库功能块(修缮中)
+	var outOfTheTreasury = cDesk.AppButton().getInstance({
+	    appName: '商品出库' ,
+	    appUrl: './Good/ShowGoods.jsp',
+		appIcon:'./images/outOfTheTreasury.png',
+	    appClickHandle: function (outOfTheTreasury) {
+	        var win = cDesk.Windows().getInstance(desk, outOfTheTreasury, {
+	        	windowWidth:1205,
+        		windowHeight:830,
+	            CloseCallback: function () {
+	            	
+	                cDesk.Taskbar.DelTask(win);
+	            }
+	        });
+	        cDesk.Taskbar.AddTask(win);
+	    }
+	});
 	
-	var RoadMapTool2 = cDesk.AppButton().getInstance({
+	//更新库存功能块(修缮中)
+	var updateStock = cDesk.AppButton().getInstance({
+	    appName: '更新库存' ,
+	    appUrl: './Good/ShowGoods.jsp',
+		appIcon:'./images/updateStock.png',
+	    appClickHandle: function (updateStock) {
+	        var win = cDesk.Windows().getInstance(desk, updateStock, {
+	        	windowWidth:1205,
+        		windowHeight:830,
+	            CloseCallback: function () {
+	            	
+	                cDesk.Taskbar.DelTask(win);
+	            }
+	        });
+	        cDesk.Taskbar.AddTask(win);
+	    }
+	});
+	
+	//查看库存功能块(修缮中)
+	var viewInventory = cDesk.AppButton().getInstance({
 	    appName: '查看库存' ,
 	    appUrl: './Good/ShowGoods.jsp',
-		appIcon:'./img/map3.png',
-	    appClickHandle: function (RoadMapTool2) {
-	        var win = cDesk.Windows().getInstance(desk, RoadMapTool2, {
+		appIcon:'./images/viewInventory.png',
+	    appClickHandle: function (viewInventory) {
+	        var win = cDesk.Windows().getInstance(desk, viewInventory, {
 	        	windowWidth:1205,
         		windowHeight:830,
 	            CloseCallback: function () {
@@ -56,16 +93,22 @@
 	        cDesk.Taskbar.AddTask(win);
 	    }
 	});
-	desk.AddAppToDesk(0, RoadMapTool);
-	desk.AddAppToDesk(0, RoadMapTool2);
-	tool.AddAppbutton(RoadMapTool);
+	
+	//功能块
+	desk.AddAppToDesk(0, goodsWarehousing);
+	desk.AddAppToDesk(0, outOfTheTreasury);
+	desk.AddAppToDesk(0, updateStock);
+	desk.AddAppToDesk(0, viewInventory);
+	
+	//侧边栏
+	tool.AddAppbutton(goodsWarehousing);
    
-    var AccidentLocbtn = cDesk.AppButton().getInstance({
+    var orderQuery = cDesk.AppButton().getInstance({
         appName: '订单查询' , 
         appUrl: 'http://localhost:8080/AccidentLoc/RoadLoc.html',
-		appIcon:'./img/map.png',
-        appClickHandle: function (AccidentLocbtn) {
-            var win = cDesk.Windows().getInstance(desk, AccidentLocbtn, {
+		appIcon:'./images/orderQuery.png',
+        appClickHandle: function (orderQuery) {
+            var win = cDesk.Windows().getInstance(desk, orderQuery, {
             	windowWidth:1205,
         		windowHeight:830,
                 CloseCallback: function () {
@@ -75,16 +118,18 @@
             cDesk.Taskbar.AddTask(win);
         }
     });
-    desk.AddAppToDesk(1, AccidentLocbtn);
-    tool.AddAppbutton(AccidentLocbtn);
     
-    var AccidentA = cDesk.AppButton().getInstance({
-        appName: '最终版' ,
+    desk.AddAppToDesk(1, orderQuery);
+    
+    tool.AddAppbutton(orderQuery);
+    
+    var viewTheUser = cDesk.AppButton().getInstance({
+        appName: '查看用户' ,
         appUrl: 'http://localhost:8080/VCC-last/Analyzer.html',
-		appIcon:'./img/analyze.png',
+		appIcon:'./images/viewTheUser.png',
 		
-        appClickHandle: function (calendarYearbtn) {
-            var win = cDesk.Windows().getInstance(desk, calendarYearbtn, {
+        appClickHandle: function (viewTheUser) {
+            var win = cDesk.Windows().getInstance(desk, viewTheUser, {
             	windowWidth:1205,
         		windowHeight:830,
                 CloseCallback: function () {
@@ -94,13 +139,13 @@
             cDesk.Taskbar.AddTask(win);
         }
     });
-    var AccidentB = cDesk.AppButton().getInstance({
-        appName: '一般事故' ,
+    var userFreezing = cDesk.AppButton().getInstance({
+        appName: '用户冻结' ,
         appUrl: 'http://localhost:8080/VCC-ybsg/index.html',
-		appIcon:'./img/analyze1.png',
+		appIcon:'./images/userFreezing.png',
 		
-        appClickHandle: function (calendarYearbtn) {
-            var win = cDesk.Windows().getInstance(desk, calendarYearbtn, {
+        appClickHandle: function (userFreezing) {
+            var win = cDesk.Windows().getInstance(desk, userFreezing, {
             	windowWidth:1205,
         		windowHeight:830,
                 CloseCallback: function () {
@@ -110,13 +155,13 @@
             cDesk.Taskbar.AddTask(win);
         }
     });
-    var AccidentC = cDesk.AppButton().getInstance({
-        appName: '初始版' ,
+    var UserAddress = cDesk.AppButton().getInstance({
+        appName: '用户地址' ,
         appUrl: 'http://localhost:8080/Demo/index_jysg3.html',
-		appIcon:'./img/analyze2.png',
+		appIcon:'./images/UserAddress.png',
 		
-        appClickHandle: function (calendarYearbtn) {
-            var win = cDesk.Windows().getInstance(desk, calendarYearbtn, {
+        appClickHandle: function (UserAddress) {
+            var win = cDesk.Windows().getInstance(desk, UserAddress, {
             	windowWidth:1205,
         		windowHeight:830,
                 CloseCallback: function () {
@@ -126,18 +171,18 @@
             cDesk.Taskbar.AddTask(win);
         }
     });
-    desk.AddAppToDesk(2, AccidentA);
-    desk.AddAppToDesk(2, AccidentB);
-    desk.AddAppToDesk(2, AccidentC);
-    tool.AddAppbutton(AccidentA);
+    desk.AddAppToDesk(2, viewTheUser);
+    desk.AddAppToDesk(2, userFreezing);
+    desk.AddAppToDesk(2, UserAddress);
+    tool.AddAppbutton(viewTheUser);
     
-    var HotAnalyzebtn = cDesk.AppButton().getInstance({
-        appName: '热点分析' ,
+    var queryManagement = cDesk.AppButton().getInstance({
+        appName: '查询管理' ,
         appUrl: 'http://localhost:8080/HotAnalaze/hotAnalyze.html',
-		appIcon:'./img/hot3.png',
+		appIcon:'./images/queryManagement.png',
 		
-        appClickHandle: function (HotAnalyzebtn) {
-            var win = cDesk.Windows().getInstance(desk, HotAnalyzebtn, {
+        appClickHandle: function (queryManagement) {
+            var win = cDesk.Windows().getInstance(desk, queryManagement, {
             	windowWidth:1205,
         		windowHeight:830,
                 CloseCallback: function () {
@@ -147,13 +192,13 @@
             cDesk.Taskbar.AddTask(win);
         }
     });
-    var AllDfldbtn = cDesk.AppButton().getInstance({
-        appName: '多发路段' ,
+    var authorityManagement = cDesk.AppButton().getInstance({
+        appName: '权限管理' ,
         appUrl: 'http://localhost:8080/HotAnalaze/displayAllDfld.html',
-		appIcon:'./img/hot2.png',
+		appIcon:'./images/authorityManagement.png',
 		
-        appClickHandle: function (AllDfldbtn) {
-            var win = cDesk.Windows().getInstance(desk, AllDfldbtn, {
+        appClickHandle: function (authorityManagement) {
+            var win = cDesk.Windows().getInstance(desk, authorityManagement, {
             	windowWidth:1205,
         		windowHeight:830,
                 CloseCallback: function () {
@@ -163,8 +208,8 @@
             cDesk.Taskbar.AddTask(win);
         }
     });
-    desk.AddAppToDesk(3, HotAnalyzebtn);
-    desk.AddAppToDesk(3, AllDfldbtn);
-    tool.AddAppbutton(HotAnalyzebtn);
+    desk.AddAppToDesk(3, queryManagement);
+    desk.AddAppToDesk(3, authorityManagement);
+    tool.AddAppbutton(queryManagement);
   
 </script>

@@ -12,33 +12,44 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
+import static WebIGo.admin.utils.MyUtils.*;
+
 @WebServlet("/android/register.html")
 public class RegisterServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        //设置编码
         response.setContentType("text/html;charset=utf-8");
         request.setCharacterEncoding("utf-8");
+
         PrintWriter out= response.getWriter();
-        //out.print("register");
+
+        //获取参数
         String username = request.getParameter("Uname");
         String psw = request.getParameter("Upwd");
         String Uphone = request.getParameter("Uphone");
+        String verifyCode=request.getParameter("Verify");
 
-        if (username == null ||username .isEmpty() ||  username.length() > 20
-                ||psw == null ||psw .isEmpty() ||  psw.length() > 20
-                ||Uphone == null ||Uphone.isEmpty() ||  Uphone.length() > 20
+        if (isParameterError(username)||isParameterError(psw)||isParameterError(Uphone)
+                ||isParameterError(verifyCode)
                 ) {
             out.print("用户名或密码格式错误");
             return;
         }
 
+
+        //TODO:在这里验证验证码信息
+
+        //根据参数信息创建User对象
         User user=new User();
         user.setUname(username);
         user.setUpwd(psw);
         user.setUphone(Uphone);
 
-        UsersDao userDao=new UsersDao();
 
+        //注册
+        UsersDao userDao=new UsersDao();
         String result=userDao.register(user);
+
         out.write(result);
 
     }
@@ -46,4 +57,7 @@ public class RegisterServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         doPost(request,response);
     }
+
+
+
 }

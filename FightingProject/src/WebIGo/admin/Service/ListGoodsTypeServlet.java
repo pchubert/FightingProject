@@ -13,6 +13,9 @@ import com.google.gson.Gson;
 
 import WebIGo.admin.Bean.GoodsType;
 import WebIGo.admin.Dao.GoodsTypeDao;
+import WebIGo.admin.Tools.Layui;
+
+import com.google.gson.GsonBuilder;
 
 /**
  * Servlet implementation class ListProductTypeServlet
@@ -38,21 +41,17 @@ public class ListGoodsTypeServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 		//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表
 		List<GoodsType> goodsTypes = new GoodsTypeDao().listGoodsType();
 		
-		//新建 gson 对象
-		Gson gson = new Gson();
-		
-		//完成 Java 对象和 Json 字符串的转化
-		String JgoodsTypes = gson.toJson(goodsTypes);
-		
-		//添加入响应
-		//以 Json 字符串形式交付前端处理
-		response.getWriter().append(JgoodsTypes);
-		
+		//新建 Layui 对象
+		Layui result = new Layui();
+				
+		//完成 Json 字符串的转化并转化为 layui 所需要的数据串格式
+		//添加入响应，交付前端处理
+		response.getWriter().write(result.toResult(goodsTypes));
 		response.getWriter().close();
 		
 	}

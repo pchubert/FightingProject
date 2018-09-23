@@ -8,6 +8,8 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import WebIGo.admin.Bean.User;
 import WebIGo.admin.utils.MybatisUtil;
 
+import javax.jws.soap.SOAPBinding;
+
 public class UsersDao {
 	private SqlSessionFactory sessionFactory = MybatisUtil.getInstance();
 	
@@ -22,7 +24,7 @@ public class UsersDao {
 		// TODO Auto-generated method stub
 		SqlSession session = sessionFactory.openSession();
 		UsersMapper usersMapper = session.getMapper(UsersMapper.class);
-		usersMapper.addUser(user);
+		usersMapper.addUser2(user);
 		session.commit();
 		return 0;
 	}
@@ -64,6 +66,26 @@ public class UsersDao {
         session.close();
         return user;
     }
+
+	public User findByName(String Uname){
+		SqlSession session=sessionFactory.openSession();
+		UsersMapper usersMapper=session.getMapper(UsersMapper.class);
+		User user=new User();
+		user.setUname(Uname);
+		user=usersMapper.findByName(user);
+		session.close();
+		return  user;
+	}
+
+	public boolean existUphone(String Uphone){
+		User user=new User();
+		user.setUphone(Uphone);
+
+		SqlSession session = sessionFactory.openSession();
+		UsersMapper userMapper = session.getMapper(UsersMapper.class);
+
+		return userMapper.existUphone(user.getUphone())!=null;
+	}
 
     public String register(User user){
         SqlSession session = sessionFactory.openSession();

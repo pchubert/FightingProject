@@ -34,6 +34,11 @@
         select * from userinfo where Uname = #{Uname} AND Upwd = #{Upwd}
     </select>
 
+    <!-- 通过用户名查找指定用户 -->
+    <select id="findByName" parameterType="WebIGo.admin.Bean.User" resultType="WebIGo.admin.Bean.User">
+        select * from userinfo where Uname = #{Uname}
+    </select>
+
     <!-- 查找用户名，手机号是否已经被注册-->
     <select id="existUname" parameterType="java.lang.String" resultType="WebIGo.admin.Bean.User">
         select * from userinfo where Uname = #{Uname}

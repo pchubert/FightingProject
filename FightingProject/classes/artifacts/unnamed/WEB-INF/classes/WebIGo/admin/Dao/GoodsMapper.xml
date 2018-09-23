@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="WebIGo.admin.Dao.GoodsMapper"  >
+    <!-- 添加纪录 -->
+	<insert id="addGoods" parameterType="WebIGo.admin.Bean.Goods">
+	  insert into goodsinfo (Gname,Gtype,Gprice,Gamount,Gunit,Gdiscount,Gimgurl,Gintro,Gbrief,Gdate,Glook)
+	  values (#{Gname},#{Gtype},#{Gprice},#{Gamount},#{Gunit},#{Gdiscount},#{Gimgurl},#{Gintro},#{Gbrief},#{Gdate},#{Glook})
+	</insert>
+	
+    <!-- 查找所有 -->
+    <select id="listGoods" parameterType="WebIGo.admin.Bean.Goods" resultType="WebIGo.admin.Bean.Goods">
+        select * from goodsinfo
+    </select>
+    
+    <!-- 删除 -->
+    <delete id="deleteGoods" parameterType="WebIGo.admin.Bean.Goods">
+        DELETE FROM goodsinfo WHERE Gid=#{Gid}
+    </delete>
+    
+    <!-- 修改记录 -->
+    <update id="updateGoods" parameterType="WebIGo.admin.Bean.Goods" >
+    	update goodsinfo set Gname=#{Gname},Gimgurl=#{Gimgurl} , Gdiscount=#{Gdiscount}, Gamount=#{Gamount} ,Gprice=#{Gprice}where Gid=#{Gid}
+    </update>
+</mapper>
