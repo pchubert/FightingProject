@@ -28,7 +28,7 @@ public class AddUserServlet extends HttpServlet{
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		resp.getWriter().append("Served at: ").append(req.getContextPath());
+		//resp.getWriter().append("Served at: ").append(req.getContextPath());
 		
 		//定义 User 对象
 		User user = new User();

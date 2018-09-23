@@ -1,6 +1,7 @@
 package WebIGo.admin.Service;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -13,6 +14,9 @@ import com.google.gson.Gson;
 
 import WebIGo.admin.Bean.User;
 import WebIGo.admin.Dao.UsersDao;
+import WebIGo.admin.Tools.Layui;
+
+import com.google.gson.GsonBuilder;
 
 /**
  * Servlet implementation class ListUserServlet
@@ -38,21 +42,37 @@ public class ListUsersServlet extends HttpServlet {
 		response.setCharacterEncoding("utf-8");
 		response.setContentType("text/html;charset=UTF-8");
 		
-		response.getWriter().append("Served at: ").append(request.getContextPath());
-		
-		//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表
-		List<User> users = new UsersDao().listUsers();
-				
-		//新建 gson 对象
-		Gson gson = new Gson();
-				
-		//完成 Java 对象和 Json 字符串的转化
-		String Jusers = gson.toJson(users);
-				
-		//添加入响应
-		//以 Json 字符串形式交付前端处理
-		response.getWriter().append(Jusers);
-		
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
+		PrintWriter out=response.getWriter();
+
+		String Uname=request.getParameter("Uname");
+		if(Uname==null){
+			//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表
+			List<User> users = new UsersDao().listUsers();
+
+			//新建 Layui 对象
+			Layui result = new Layui();
+			
+			//完成 Json 字符串的转化并转化为 layui 所需要的数据串格式
+			//添加入响应，交付前端处理
+			response.getWriter().write(result.toResult(users));
+			response.getWriter().close();
+		}else{ //有Uname参数
+
+			UsersDao usersDao=new UsersDao();
+			User user=usersDao.findByName(Uname);
+
+			if(user==null){
+				out.print("无此用户");
+			}else{
+
+				//转对象为json，返回给安卓
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd HH:mm:ss").create();
+				String juser=gson.toJson(user);
+
+				out.print(juser);
+			}
+		}
 		response.getWriter().close();
 	}
 
@@ -63,5 +83,4 @@ public class ListUsersServlet extends HttpServlet {
 		// TODO Auto-generated method stub
 		doGet(request, response);
 	}
-
 }

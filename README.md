@@ -1,12 +1,22 @@
 # FightingProject
-A test project for me and my teammates
+A test project for me and my teammates<br><br>
 
-######################################
-9_15
-######################################
-The server backend code continues to complete.
-Added function : update(),delete(),Android communication module
-Edited function : add(),list()
-over
-######################################
+######################################################################<br>
+9_23<br>
+######################################################################<br>
+The server backend code continues to complete.<br>
+Added function : SMS verification module<br>
+Edited function : list(),Android communication module<br>
+Correction function : Date storage,Response data format<br>
+over<br>
+######################################################################<br>
+
+######################################################################<br>
+9_15<br>
+######################################################################<br>
+The server backend code continues to complete.<br>
+Added function : update(),delete(),Android communication module<br>
+Edited function : add(),list()<br>
+over<br>
+######################################################################<br>
 

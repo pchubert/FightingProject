@@ -13,6 +13,9 @@ import com.google.gson.Gson;
 
 import WebIGo.admin.Bean.Manager;
 import WebIGo.admin.Dao.ManagerDao;
+import WebIGo.admin.Tools.Layui;
+
+import com.google.gson.GsonBuilder;
 
 @WebServlet("/ListManager")
 public class ListManagersServlet extends HttpServlet{
@@ -35,20 +38,17 @@ public class ListManagersServlet extends HttpServlet{
 		resp.setCharacterEncoding("utf-8");
 		resp.setContentType("text/html;charset=UTF-8");
 				
-		resp.getWriter().append("Served at: ").append(req.getContextPath());
+		//resp.getWriter().append("Served at: ").append(req.getContextPath());
 		
 		//依赖 mybatis 获取数据库中的数据，并创建相应的数据对象列表
 		List<Manager> managers = new ManagerDao().listManagers();
 		
-		//新建 gson 对象
-		Gson gson = new Gson();
-
-		//完成 Java 对象和 Json 字符串的转化
-		String Jmanager = gson.toJson(managers);
-		
-		//添加入响应
-		//以 Json 字符串形式交付前端处理
-		resp.getWriter().append(Jmanager);
+		//新建 Layui 对象
+		Layui result = new Layui();
+						
+		//完成 Json 字符串的转化并转化为 layui 所需要的数据串格式
+		//添加入响应，交付前端处理
+		resp.getWriter().write(result.toResult(managers));
 		resp.getWriter().close();
 
 		
